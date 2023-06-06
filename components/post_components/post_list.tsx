@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useState, useCallback } from "react";
-import { useSearchParams } from "next/navigation";
+import { usePathname, useSearchParams } from "next/navigation";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { Paginate } from "@/models/paginate";
 import { PostModel } from "@/models/posts/post";
@@ -21,16 +21,17 @@ export const PostList = ({ type, postList }: PostListProps) => {
   const [isSearch, setItSearch] = useState(false);
   const [isFilterTags, setFilterTags] = useState(false);
   const [hasMore, setHasMore] = useState(true);
+  const path = usePathname();
   const { get } = useSearchParams();
   const keyword = get("q");
   const tags = get("tags");
-  // thực hiện tìm kiếm
+
   useEffect(() => {
     setPosts([]);
     setPageOfPosts(2);
     setItSearch(!!keyword);
     setFilterTags(!!tags);
-  }, [keyword, tags]);
+  }, [keyword, tags, path]);
 
   //filter by tags
   useEffect(() => {
