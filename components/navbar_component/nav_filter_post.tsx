@@ -32,8 +32,8 @@ export const NavFilterPost = () => {
   }, [keyword, tags]);
   useEffect(() => {
     if (!tags || selected.length == 0) {
-      push(`${pathName}`);
       setSelected([]);
+      push(`${pathName}`);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [tags, keyword]);
