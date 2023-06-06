@@ -101,7 +101,7 @@ export const PostList = ({ type, postList }: PostListProps) => {
         ))}
         endMessage={
           <h4 className="text-center text-gray-500 font-semibold">
-            Không còn gì để hiển thị
+            Không có gì để hiển thị
           </h4>
         }
       >
