@@ -1,10 +1,11 @@
 import { cookies } from "next/headers";
 
+const APP_URL = "https://fluttercommunityvn.vercel.app/api";
 export const appApi = {
-  async get(url: string, next?: NextFetchRequestConfig) {
+  async get(path: string, next?: NextFetchRequestConfig) {
     const token = cookies().get("access_token")?.value;
     const access_token = token ? `Bearer ${token}` : "";
-    return await fetch(url, {
+    return await fetch(`${APP_URL}${path}`, {
       method: "GET",
       cache: "no-store",
       next: {
@@ -16,10 +17,10 @@ export const appApi = {
       },
     });
   },
-  post(url: string, data: any, next?: NextFetchRequestConfig) {
+  post(path: string, data: any, next?: NextFetchRequestConfig) {
     const token = cookies().get("access_token")?.value;
     const access_token = token ? `Bearer ${token}` : "";
-    return fetch(url, {
+    return fetch(`${APP_URL}${path}`, {
       method: "POST",
       next: {
         ...next,
@@ -31,10 +32,10 @@ export const appApi = {
       body: JSON.stringify(data),
     });
   },
-  put(url: string, data: any, next?: NextFetchRequestConfig) {
+  put(path: string, data: any, next?: NextFetchRequestConfig) {
     const token = cookies().get("access_token")?.value;
     const access_token = token ? `Bearer ${token}` : "";
-    return fetch(url, {
+    return fetch(`${APP_URL}${path}`, {
       method: "PUT",
       next: {
         ...next,
@@ -46,10 +47,10 @@ export const appApi = {
       body: JSON.stringify(data),
     });
   },
-  remove(url: string, next?: NextFetchRequestConfig) {
+  remove(path: string, next?: NextFetchRequestConfig) {
     const token = cookies().get("access_token")?.value;
     const access_token = token ? `Bearer ${token}` : "";
-    return fetch(url, {
+    return fetch(`${APP_URL}${path}`, {
       method: "DELETE",
       next: {
         ...next,

@@ -5,10 +5,14 @@ const fetcher = async (...args: Parameters<typeof fetch>) => {
   return res.json();
 };
 
-export function useSWRConfig(url: string, options?: any) {
-  const { data, error, mutate } = useSWR(url, fetcher, {
-    ...options,
-  });
+export function useSWRConfig(path: string, options?: any) {
+  const { data, error, mutate } = useSWR(
+    `https://fluttercommunityvn.vercel.app/${path}`,
+    fetcher,
+    {
+      ...options,
+    }
+  );
   return {
     data,
     error,

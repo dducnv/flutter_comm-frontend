@@ -3,7 +3,7 @@ import { appApi } from "@/untils/configs/app_api_config";
 import { EllipsisHorizontalIcon } from "@heroicons/react/24/outline";
 
 async function getPostDetails(slug: string) {
-  const res = await appApi.get(`http://localhost:3000/api/posts/${slug}`, {
+  const res = await appApi.get(`/posts/${slug}`, {
     revalidate: 60 * 60 * 24,
   });
   return res.json();

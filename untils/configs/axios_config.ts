@@ -1,7 +1,7 @@
 import axios, { AxiosResponse } from "axios";
 
 const axiosConfig = axios.create({
-  baseURL: "http://localhost:3000/api",
+  baseURL: "https://fluttercommunityvn.vercel.app/api",
   headers: {
     "Content-Type": "application/json",
   },
