@@ -59,7 +59,7 @@ export const PostList = ({ type, postList }: PostListProps) => {
       return () => clearTimeout(delayDebounceFn);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isSearch, isFilterTags, keyword, tags]);
+  }, [isSearch, isFilterTags, keyword, tags, path]);
 
   const handleTags = async (pageNum: number) => {
     const res: any = await postApi.getAllPost(pageNum, type, tags!);
