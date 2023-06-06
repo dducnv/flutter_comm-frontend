@@ -7,7 +7,7 @@ export function useTags(option?: any) {
     error,
     mutate,
     isLoading,
-  }: any = useSWRConfig(`/api/tags`, {
+  }: any = useSWRConfig(`/tags`, {
     dedupingInterval: 2 * 60 * 60 * 1000,
     revalidateOnFocus: false,
     ...option,
