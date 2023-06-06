@@ -1,3 +1,4 @@
+"use client";
 import { PostItemSkeletonLoaders } from "@/components/post_components/post_item_skeleton_loaders";
 
 export default function Loading() {

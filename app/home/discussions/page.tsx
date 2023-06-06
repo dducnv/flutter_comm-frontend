@@ -8,7 +8,10 @@ export const metadata = {
 };
 async function getData() {
   const res = await appApi.get(
-    `http://localhost:3000/api/posts?type=discussion`
+    `http://localhost:3000/api/posts?type=discussion`,
+    {
+      revalidate: 60 * 60 * 24,
+    }
   );
   return res.json();
 }

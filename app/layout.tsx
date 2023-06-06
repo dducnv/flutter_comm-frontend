@@ -1,4 +1,3 @@
-"use client";
 import { Navbar } from "@/components/navbar_component/navbar";
 import "./globals.css";
 import { Roboto } from "next/font/google";

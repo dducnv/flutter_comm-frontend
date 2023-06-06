@@ -5,9 +5,7 @@ export async function GET(
   request: NextRequest,
   { params }: { params: { path: string } }
 ) {
-  const res = await appApi.get(POST_API_URL + "/" + params.path + "/details", {
-    revalidate: 60,
-  });
+  const res = await appApi.get(POST_API_URL + "/" + params.path + "/details");
   const posts = await res.json();
   return NextResponse.json(posts);
 }
