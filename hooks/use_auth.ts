@@ -7,7 +7,7 @@ export function useAuth(option?: any) {
     error,
     mutate,
     isLoading,
-  }: any = useSWRConfig(`/api/auth/me`, {
+  }: any = useSWRConfig(`/auth/me`, {
     dedupingInterval: 60 * 60 * 1000,
     revalidateOnFocus: false,
     ...option,
