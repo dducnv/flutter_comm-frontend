@@ -6,6 +6,7 @@ export const appApi = {
     const access_token = token ? `Bearer ${token}` : "";
     return await fetch(url, {
       method: "GET",
+      cache: "no-cache",
       next: {
         ...next,
       },
