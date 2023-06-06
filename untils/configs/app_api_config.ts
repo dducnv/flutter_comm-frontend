@@ -1,6 +1,6 @@
 import { cookies } from "next/headers";
 
-const APP_URL = "https://fluttercommunityvn.vercel.app/api";
+const APP_URL = process.env.API_URL + "/api/v1";
 export const appApi = {
   async get(path: string, next?: NextFetchRequestConfig) {
     const token = cookies().get("access_token")?.value;

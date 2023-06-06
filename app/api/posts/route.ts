@@ -1,6 +1,6 @@
 import { appApi } from "@/untils/configs/app_api_config";
 import { NextResponse, NextRequest } from "next/server";
-const POST_API_URL = process.env.API_URL + "/api/v1/posts";
+const POST_API_URL = "/posts";
 export async function GET(request: NextRequest) {
   const searchParams = request.nextUrl.searchParams;
   const page = searchParams.get("page") || 1;

@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { appApi } from "@/untils/configs/app_api_config";
-const POST_API_URL = process.env.API_URL + "/api/v1/posts";
+const POST_API_URL = "/posts";
 export async function GET(
   request: NextRequest,
   { params }: { params: { uuid: string } }
