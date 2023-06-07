@@ -31,12 +31,12 @@ export const NavFilterPost = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [keyword, tags]);
   useEffect(() => {
-    if (!tags || selected.length == 0) {
+    if (!!tags || selected.length == 0) {
       setSelected([]);
       push(`${pathName}`);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [tags, keyword, selected]);
+  }, [tags, keyword]);
   function handleSearch(value: string) {
     setValue(value);
     if (value.trim().length == 0) {
