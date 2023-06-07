@@ -29,14 +29,14 @@ export const NavFilterPost = () => {
       setValue(keyword);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [keyword, tags]);
+  }, [keyword]);
   useEffect(() => {
     if (!!tags || selected.length == 0) {
       setSelected([]);
       push(`${pathName}`);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [tags, keyword]);
+  }, [tags]);
   function handleSearch(value: string) {
     setValue(value);
     if (value.trim().length == 0) {
