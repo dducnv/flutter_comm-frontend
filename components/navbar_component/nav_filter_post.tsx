@@ -36,7 +36,7 @@ export const NavFilterPost = () => {
       push(`${pathName}`);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [tags, keyword]);
+  }, [tags, keyword, selected]);
   function handleSearch(value: string) {
     setValue(value);
     if (value.trim().length == 0) {
@@ -46,7 +46,7 @@ export const NavFilterPost = () => {
     }
   }
 
-  function handleSelectChange(selected: any) {
+  function handleSelectChange(selected: any[]) {
     setSelected(selected);
     if (selected.length == 0) {
       push(`${pathName}`);
