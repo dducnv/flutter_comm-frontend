@@ -34,7 +34,9 @@ export const NavFilterPost = () => {
   useEffect(() => {
     if (!tagParam || selected.length == 0) {
       setSelected([]);
-      push(`${pathName}`);
+      if (!keyword) {
+        push(`${pathName}`);
+      }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [tagParam]);
