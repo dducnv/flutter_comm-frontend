@@ -17,6 +17,7 @@ export const NavFilterPost = () => {
   const { isLogin, isLoading: profileLoading } = useAuth();
   const [selected, setSelected] = useState<any[]>([]);
   const keyword = get("q");
+  const tagParam = get("tags");
   const [value, setValue] = useState("");
   const tagsToOption = _.map(tags?.data, (tag: TagModel) => {
     return { label: tag.name, value: tag.slug };
@@ -31,12 +32,12 @@ export const NavFilterPost = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [keyword]);
   useEffect(() => {
-    if (!!tags || selected.length == 0) {
+    if (!tagParam || selected.length == 0) {
       setSelected([]);
       push(`${pathName}`);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [tags]);
+  }, [tagParam]);
   function handleSearch(value: string) {
     setValue(value);
     if (value.trim().length == 0) {
