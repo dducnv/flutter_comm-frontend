@@ -68,7 +68,7 @@ export const PostList = ({ type, postList }: PostListProps) => {
   };
 
   async function handleSearch(pageNum: number) {
-    const res: any = await appApi.search(pageNum, keyword);
+    const res: any = await appApi.search(pageNum, keyword, type);
     setPosts((prevPosts) => prevPosts.concat(res.content));
     setHasMore(!res.empty);
   }

@@ -5,8 +5,9 @@ export async function GET(req: NextRequest) {
   const searchParams = req.nextUrl.searchParams;
   const keyword = searchParams.get("q");
   const page = searchParams.get("page");
+  const type = searchParams.get("type");
   const res = await appApi.get(
-    SEARCH_API_URL + "?q=" + keyword + "&page=" + page
+    SEARCH_API_URL + "?q=" + keyword + "&page=" + page + "&type=" + type
   );
   const result = await res.json();
   return NextResponse.json(result);
