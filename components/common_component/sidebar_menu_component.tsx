@@ -7,6 +7,7 @@ export const SidebarMenu = () => {
   const router = usePathname();
   const { get } = useSearchParams();
   const tags = get("tags");
+  const keyword = get("q");
   return (
     <div className=" w-[350px] bg-slate-50 border  rounded-md max-h-[250px] sticky top-3 p-3">
       <h2 className="mb-2 text-[16px] font-semibold text-gray-700 ">
@@ -16,7 +17,9 @@ export const SidebarMenu = () => {
         {sidebarMenuList.map((item: any) => (
           <li key={item.path}>
             <Link
-              href={`${item.path}${tags ? `?tags=${tags}` : ""}`}
+              href={`${item.path}${
+                tags ? `?tags=${tags}` : keyword ? `?q=${keyword}` : ""
+              }`}
               className="flex items-center"
             >
               <div
