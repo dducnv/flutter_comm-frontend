@@ -8,7 +8,7 @@ export const metadata = {
 };
 async function getData() {
   const res = await appApi.get(`/posts?type=questions`, {
-    revalidate: 60 * 60 * 24,
+    revalidate: 60 * 15,
   });
   return res.json();
 }
