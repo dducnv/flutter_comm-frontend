@@ -92,13 +92,16 @@ export default async function DetailsPost({
                 src={post.author?.avatar}
                 alt=""
               />
-              {_.map(post.usersComment, (userComment) => (
-                <img
-                  className="w-8 h-8 border-2 border-white rounded-full dark:border-gray-800"
-                  src={userComment.avatar}
-                  alt=""
-                />
-              ))}
+              {_.map(post.usersComment, (userComment) => {
+                if (userComment.username !== post.author?.username)
+                  return (
+                    <img
+                      className="w-8 h-8 border-2 border-white rounded-full dark:border-gray-800"
+                      src={userComment.avatar}
+                      alt=""
+                    />
+                  );
+              })}
             </div>
           </div>
         </div>
