@@ -105,7 +105,7 @@ export const NavFilterPost = () => {
             value={value}
             type="text"
             id="simple-search"
-            className="bg-gray-50 border border-gray-300 z-10 text-gray-700 text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5 "
+            className="bg-gray-50 border border-gray-300 z-10 text-gray-700 text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 h-[42px] "
             placeholder="Tìm kiếm..."
           />
           {value.length > 0 && (
@@ -146,7 +146,7 @@ export const NavFilterPost = () => {
         <Link
           href={"/posts/new"}
           type="button"
-          className="text-white md:block hidden text-center w-2/12 bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-6 py-2.5 "
+          className="text-white md:flex hidden text-center w-2/12 bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-6 h-[42px] justify-center items-center "
         >
           Tạo bài viết
         </Link>

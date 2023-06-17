@@ -18,8 +18,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body className={`${roboto.className} bg-slate-100`}>
+    <html lang="vi" suppressHydrationWarning={true}>
+      <body
+        suppressHydrationWarning={true}
+        className={`${roboto.className} bg-slate-100`}
+      >
         <Navbar />
         {children}
       </body>

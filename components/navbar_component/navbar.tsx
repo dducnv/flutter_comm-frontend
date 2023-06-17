@@ -7,6 +7,7 @@ import {
 } from "@heroicons/react/24/outline";
 import { GOOGLE_AUTH_URL } from "@/untils/constant/social_login_route";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 export const Navbar = () => {
   const { profile, logout, isLoading, isLogin } = useAuth();
   const { push } = useRouter();
@@ -17,9 +18,11 @@ export const Navbar = () => {
     <nav className="py-3 navbar bg-gray-200  shadow-lg mb-5">
       <div className="max-w-6xl m-auto flex md:justify-between justify-center items-center">
         <div>
-          <h1 className="text-gray-700 font-bold font-mono">
-            FLUTTER COMMUNITY
-          </h1>
+          <Link href={"/"}>
+            <h1 className="text-gray-700 font-bold font-mono">
+              FLUTTER COMMUNITY
+            </h1>
+          </Link>
         </div>
         <div className="md:block hidden">
           {isLoading ? (

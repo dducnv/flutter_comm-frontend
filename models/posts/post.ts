@@ -1,3 +1,5 @@
+import { BaseUserInfo } from "../user/user";
+
 export interface PostModel {
   uuid?: string;
   title: string;
@@ -6,11 +8,11 @@ export interface PostModel {
   category: Category;
   tags: Tag[];
   reactions: any[];
-  author?: UserInfoPost;
+  author?: BaseUserInfo;
   viewCount: number;
   commentCount: number;
   reactionCount: number;
-  usersComment: UserInfoPost[];
+  usersComment: BaseUserInfo[];
   createdAt: string;
   contents?: string;
   public?: boolean;
@@ -21,11 +23,6 @@ export interface Tag {
   slug: string;
 }
 
-export interface UserInfoPost {
-  name: string;
-  avatar: string;
-  username: string;
-}
 export interface Category {
   name: string;
   slug: string;

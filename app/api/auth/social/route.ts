@@ -4,6 +4,7 @@ export async function GET(request: NextRequest) {
   const token = searchParams.get("token");
   const response = NextResponse.redirect(request.nextUrl.origin);
   const d = new Date(Date.now());
+  if (token === null) return response;
   response.cookies.set("access_token", `${token}`, {
     httpOnly: true,
     path: "/",

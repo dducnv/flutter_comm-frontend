@@ -105,8 +105,12 @@ export const PostList = ({ type, postList }: PostListProps) => {
           </h4>
         }
       >
-        {posts?.map((item: PostModel) => (
-          <PostItem key={item.uuid} {...item} description="description" />
+        {posts?.map((item: PostModel, index) => (
+          <PostItem
+            key={item.uuid + item.slug + index}
+            {...item}
+            description="description"
+          />
         ))}
       </InfiniteScroll>
     </>

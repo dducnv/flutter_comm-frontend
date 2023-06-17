@@ -164,9 +164,53 @@ li.groupChildEle {
 
 .rmsc .dropdown-container{
      border-radius: 6px !important;
+     height: 42px !important;
 }
 .rmsc .dropdown-heading {
 
      padding: 20px  10px !important;
 
+}
+
+/*
+editor comment
+*/
+
+.editor-container .react-mde{
+     border:none !important;
+     border-radius: 8px !important;
+     overflow: hidden !important;
+}
+
+.editor-container .react-mde .mde-textarea-wrapper{
+     padding: 2px !important;
+}
+.editor-container .react-mde .mde-header  {
+     border: none !important;
+}
+.editor-container .react-mde .mde-header .mde-tabs button {
+     border-radius: 8px !important;
+     overflow: hidden !important;
+     padding: 0px 10px !important;
+}
+.editor-container .react-mde .mde-header .mde-tabs button {
+     border-radius: 8px !important;
+     overflow: hidden !important;
+     padding: 0px 10px !important;
+}
+.editor-container .react-mde .mde-textarea-wrapper textarea{
+     min-height: 100px;
+     border:1px solid #d1d5db !important;
+     border-radius: 8px;
+
+}
+
+
+.editor-container .react-mde .mde-preview {
+     background-color: #fff !important;
+
+
+}
+.editor-container .react-mde .image-tip {
+     border-top: none !important;
 }
