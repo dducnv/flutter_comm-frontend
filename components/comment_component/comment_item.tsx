@@ -18,6 +18,8 @@ export const CommentItem = ({ postUUID, comment: data }: Props) => {
   const [comment, setComment] = React.useState<Comment>(data);
   const [activeFormReply, setActiveFormReply] = React.useState<boolean>(false);
   const [value, setValue] = React.useState<string>("");
+  const [blackWord, setBlackWord] = React.useState<string>();
+  const [isBlackWord, setIsBlackWord] = React.useState<boolean>(false);
   const [loadingUpComments, setLoadingUpComments] =
     React.useState<boolean>(false);
 
@@ -26,7 +28,7 @@ export const CommentItem = ({ postUUID, comment: data }: Props) => {
     if (value.length > 0) {
       commentApi
         .postCommentReplyForPost(postUUID, value, comment.uuid)
-        .then((res) => {
+        .then((res: any) => {
           const newComment: Comment = {
             uuid: res?.data?.uuid,
             content: res?.data?.content,
@@ -45,7 +47,15 @@ export const CommentItem = ({ postUUID, comment: data }: Props) => {
           };
 
           if (res) {
-            console.log(res);
+            if (res?.message === "Bài đăng chứa các từ ngữ cấm!") {
+              setBlackWord(res?.data?.blackWords);
+              setIsBlackWord(true);
+              setLoadingUpComments(false);
+              return;
+            }
+            setBlackWord("");
+            setIsBlackWord(false);
+
             setValue("");
             setLoadingUpComments(false);
             setComment((prevComments: any) => {
@@ -102,6 +112,8 @@ export const CommentItem = ({ postUUID, comment: data }: Props) => {
         <div className="px-3 pt-3 pb-3  border-t border-gray-300">
           {activeFormReply ? (
             <CommentEditor
+              blackWord={blackWord}
+              isBlackWord={isBlackWord}
               value={value}
               onChange={setValue}
               loading={loadingUpComments}

@@ -11,6 +11,8 @@ import { Refs } from "react-mde/lib/definitions/refs";
 import { BaseUserInfo } from "@/models/user/user";
 import classNames from "classnames";
 type Props = {
+  blackWord?: string;
+  isBlackWord?: boolean;
   onChange: (value: string) => void;
   onClick: () => void;
   userSuggestion: BaseUserInfo[];
@@ -52,6 +54,8 @@ const converter = new Showdown.Converter({
   tasklists: true,
 });
 export const CommentEditor = ({
+  blackWord,
+  isBlackWord,
   onChange,
   onClick,
   userSuggestion,
@@ -92,7 +96,20 @@ export const CommentEditor = ({
   };
 
   return (
-    <div className="pb-3 p-2 border border-gray-300 editor-container mb-3 rounded-lg bg-[#f9f9f9]">
+    <div
+      className={classNames(
+        "pb-3 p-2 border editor-container mb-3 rounded-lg bg-[#f9f9f9]",
+        isBlackWord ? "border-red-500" : "border-gray-300 "
+      )}
+    >
+      {isBlackWord && (
+        <div className="flex items-center">
+          <span className="text-gray-600 font-semibold text-sm mr-2">
+            Bình luận chứa từ cấm:{" "}
+          </span>
+          <span className="text-red-500 text-sm">{blackWord}</span>
+        </div>
+      )}
       <ReactMde
         minEditorHeight={150}
         heightUnits="px"

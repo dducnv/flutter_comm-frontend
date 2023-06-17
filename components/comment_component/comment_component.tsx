@@ -17,7 +17,8 @@ type Props = {
 export const CommentComponent = ({ uuid }: Props) => {
   const [comments, setComments] = useState<BaseResponseModel<Comment[]>>();
   const [value, setValue] = useState<string>("");
-
+  const [blackWord, setBlackWord] = useState<string>();
+  const [isBlackWord, setIsBlackWord] = useState<boolean>(false);
   const [loadingGetComments, setLoadingGetComments] = useState<boolean>(true);
   const [loadingUpComments, setLoadingUpComments] = useState<boolean>(true);
 
@@ -35,7 +36,15 @@ export const CommentComponent = ({ uuid }: Props) => {
   function handleUpComment() {
     setLoadingUpComments(true);
     if (value.length > 0) {
-      commentApi.postCommentForPost(uuid, value).then((res) => {
+      commentApi.postCommentForPost(uuid, value).then((res: any) => {
+        if (res?.message === "Bài đăng chứa các từ ngữ cấm!") {
+          setBlackWord(res?.data?.blackWords);
+          setIsBlackWord(true);
+          setLoadingUpComments(false);
+          return;
+        }
+        setBlackWord("");
+        setIsBlackWord(false);
         const newComment: Comment = {
           uuid: res?.data?.uuid,
           content: res?.data?.content,
@@ -108,6 +117,8 @@ export const CommentComponent = ({ uuid }: Props) => {
         </div>
         <hr className="mb-3 h-px border-t-0 bg-transparent bg-gradient-to-r from-transparent via-neutral-700 to-transparent opacity-25 dark:opacity-100" />
         <CommentEditor
+          blackWord={blackWord}
+          isBlackWord={isBlackWord}
           onChange={setValue}
           onClick={() => {
             handleUpComment();
