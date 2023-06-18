@@ -116,7 +116,7 @@ export const CommentComponent = ({ uuid }: Props) => {
             ))
           )}
         </div>
-        <hr className="mb-3 h-px border-t-0 bg-transparent bg-gradient-to-r from-transparent via-neutral-700 to-transparent opacity-25 dark:opacity-100" />
+        <hr className="mb-3 h-px border-t-0 bg-transparent bg-gradient-to-r from-transparent via-neutral-700 to-transparent opacity-25 " />
         <RequiredAuthcomponent>
           <CommentEditor
             blackWord={blackWord}

@@ -61,7 +61,7 @@ export function Modal(props: ModalProps) {
             >
               <div
                 className={classNames(
-                  "inline-block w-full p-6 my-28 overflow-hidden text-left align-middle transition-all transform bg-white dark:bg-slate-900 shadow-xl rounded-2xl",
+                  "inline-block w-full p-6 my-28 overflow-hidden text-left align-middle transition-all transform bg-white  shadow-xl rounded-2xl",
                   size
                 )}
               >
@@ -78,7 +78,7 @@ export function Modal(props: ModalProps) {
                       props.setIsOpen(false, e);
                     }}
                     type="button"
-                    className="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
+                    className="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center "
                   >
                     <svg
                       className="w-5 h-5"

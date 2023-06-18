@@ -9,15 +9,15 @@ type Props = {};
 export function BottonAppbar({}: Props) {
   const { profile, logout, isLoading, isLogin } = useAuth();
   return (
-    <div className="fixed bottom-0 z-50 w-full -translate-x-1/2 bg-white border-t border-gray-200 left-1/2 dark:bg-gray-700 dark:border-gray-600">
+    <div className="fixed bottom-0 z-50 w-full -translate-x-1/2 bg-white border-t border-gray-200 left-1/2 ">
       <div className="grid h-full max-w-lg grid-cols-5 mx-auto">
         <button
           data-tooltip-target="tooltip-home"
           type="button"
-          className="inline-flex flex-col items-center justify-center p-4 hover:bg-gray-50 dark:hover:bg-gray-800 group"
+          className="inline-flex flex-col items-center justify-center p-4 hover:bg-gray-50 "
         >
           <svg
-            className="w-6 h-6 mb-1 text-gray-500 dark:text-gray-400 group-hover:text-blue-600 dark:group-hover:text-blue-500"
+            className="w-6 h-6 mb-1 text-gray-500  group-hover:text-blue-600 "
             fill="currentColor"
             viewBox="0 0 20 20"
             xmlns="http://www.w3.org/2000/svg"
@@ -30,7 +30,7 @@ export function BottonAppbar({}: Props) {
         <div
           id="tooltip-home"
           role="tooltip"
-          className="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700"
+          className="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip "
         >
           Home
           <div className="tooltip-arrow" data-popper-arrow="" />
@@ -38,10 +38,10 @@ export function BottonAppbar({}: Props) {
         <button
           data-tooltip-target="tooltip-bookmark"
           type="button"
-          className="inline-flex flex-col items-center justify-center p-4 hover:bg-gray-50 dark:hover:bg-gray-800 group"
+          className="inline-flex flex-col items-center justify-center p-4 hover:bg-gray-50 group"
         >
           <svg
-            className="w-6 h-6 mb-1 text-gray-500 dark:text-gray-400 group-hover:text-blue-600 dark:group-hover:text-blue-500"
+            className="w-6 h-6 mb-1 text-gray-500  group-hover:text-blue-600 "
             fill="currentColor"
             viewBox="0 0 20 20"
             xmlns="http://www.w3.org/2000/svg"
@@ -54,7 +54,7 @@ export function BottonAppbar({}: Props) {
         <div
           id="tooltip-bookmark"
           role="tooltip"
-          className="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700"
+          className="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip "
         >
           Bookmark
           <div className="tooltip-arrow" data-popper-arrow="" />
@@ -62,10 +62,10 @@ export function BottonAppbar({}: Props) {
         <button
           data-tooltip-target="tooltip-post"
           type="button"
-          className="inline-flex flex-col items-center justify-center p-4 hover:bg-gray-50 dark:hover:bg-gray-800 group"
+          className="inline-flex flex-col items-center justify-center p-4 hover:bg-gray-50 group"
         >
           <svg
-            className="w-6 h-6 mb-1 text-gray-500 dark:text-gray-400 group-hover:text-blue-600 dark:group-hover:text-blue-500"
+            className="w-6 h-6 mb-1 text-gray-500  group-hover:text-blue-600 "
             fill="currentColor"
             viewBox="0 0 20 20"
             xmlns="http://www.w3.org/2000/svg"
@@ -82,7 +82,7 @@ export function BottonAppbar({}: Props) {
         <div
           id="tooltip-post"
           role="tooltip"
-          className="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700"
+          className="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip "
         >
           New post
           <div className="tooltip-arrow" data-popper-arrow="" />
@@ -90,10 +90,10 @@ export function BottonAppbar({}: Props) {
         <button
           data-tooltip-target="tooltip-search"
           type="button"
-          className="inline-flex flex-col items-center justify-center p-4 hover:bg-gray-50 dark:hover:bg-gray-800 group"
+          className="inline-flex flex-col items-center justify-center p-4 hover:bg-gray-50  group"
         >
           <svg
-            className="w-6 h-6 mb-1 text-gray-500 dark:text-gray-400 group-hover:text-blue-600 dark:group-hover:text-blue-500"
+            className="w-6 h-6 mb-1 text-gray-500  group-hover:text-blue-600 "
             fill="currentColor"
             viewBox="0 0 20 20"
             xmlns="http://www.w3.org/2000/svg"
@@ -110,7 +110,7 @@ export function BottonAppbar({}: Props) {
         <div
           id="tooltip-search"
           role="tooltip"
-          className="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700"
+          className="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip "
         >
           Search
           <div className="tooltip-arrow" data-popper-arrow="" />
@@ -118,7 +118,7 @@ export function BottonAppbar({}: Props) {
         <button
           data-tooltip-target="tooltip-settings"
           type="button"
-          className="inline-flex flex-col items-center justify-center p-4 hover:bg-gray-50 dark:hover:bg-gray-800 group"
+          className="inline-flex flex-col items-center justify-center p-4 hover:bg-gray-50  group"
         >
           <img
             src={profile?.avatar}
