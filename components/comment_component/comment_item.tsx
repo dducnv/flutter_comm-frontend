@@ -105,8 +105,11 @@ export const CommentItem = ({ postUUID, comment: data }: Props) => {
       >
         <div className="pl-7 pr-3">
           <ol className="relative border-l border-gray-300 ">
-            {_.map(comment.replies, (commentReply: Comment) => (
-              <CommentReplyItem commentReply={commentReply} />
+            {_.map(comment.replies, (commentReply: Comment, index) => (
+              <CommentReplyItem
+                commentReply={commentReply}
+                key={commentReply.uuid + index}
+              />
             ))}
           </ol>
         </div>
@@ -116,6 +119,7 @@ export const CommentItem = ({ postUUID, comment: data }: Props) => {
               blackWord={blackWord}
               isBlackWord={isBlackWord}
               value={value}
+              autoFocus={true}
               onChange={setValue}
               loading={loadingUpComments}
               onClick={() => {

@@ -12,6 +12,7 @@ import {
   ChevronUpDownIcon,
 } from "@heroicons/react/24/outline";
 import { IMultiselectProps } from "./interface";
+import classNames from "classnames";
 
 const closeIconTypes = {
   circle: CloseCircleDark,
@@ -708,9 +709,10 @@ export class Multiselect extends React.Component<IMultiselectProps, any> {
         <div
           onFocus={this.onFocus}
           onBlur={this.onBlur}
-          className={`p-2.5 rounded-lg bg-gray-50 min-w-[300px]  border border-gray-300 z-10 text-gray-700 ${
-            singleSelect ? "singleSelect" : ""
-          }`}
+          className={classNames(
+            "p-2.5 rounded-lg bg-gray-50 min-w-[300px]  border border-gray-300 z-10 text-gray-700  ",
+            singleSelect && "singleSelect"
+          )}
           ref={this.searchWrapper}
           style={style["searchBox"]}
           onClick={singleSelect ? this.toggelOptionList : () => {}}
@@ -752,9 +754,10 @@ export class Multiselect extends React.Component<IMultiselectProps, any> {
           )}
         </div>
         <div
-          className={`optionListContainer ${
+          className={classNames(
+            "optionListContainer",
             toggleOptionsList ? "displayBlock" : "displayNone"
-          }`}
+          )}
           onMouseDown={(e) => {
             e.preventDefault();
           }}

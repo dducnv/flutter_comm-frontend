@@ -8,6 +8,7 @@ import { useTags } from "@/hooks/use_tags";
 import { TagModel } from "@/models/tags/tag";
 import _ from "lodash";
 import { useAuth } from "@/hooks/use_auth";
+import classNames from "classnames";
 
 export const NavFilterPost = () => {
   const { get } = useSearchParams();
@@ -77,9 +78,10 @@ export const NavFilterPost = () => {
   return (
     <div className="flex w-full mb-5 space-x-3 justify-between">
       <div
-        className={`flex items-center  md:px-0 px-1 ${
+        className={classNames(
+          "flex items-center  md:px-0 px-1 ",
           isLogin ? "md:w-7/12 w-full" : "md:w-9/12 w-full"
-        }`}
+        )}
       >
         <label htmlFor="simple-search" className="sr-only">
           Search

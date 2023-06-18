@@ -7,6 +7,7 @@ import { reactionsSeed } from "./reaction_seed";
 import _ from "lodash";
 import { RequiredAuthcomponent } from "../auth_component/required_auth_component";
 import { useAuth } from "@/hooks/use_auth";
+import classNames from "classnames";
 
 type Props = {
   reactions?: Reaction[];
@@ -36,16 +37,13 @@ export const ReactionButton = ({
     <RequiredAuthcomponent>
       <div className="flex space-x-2">
         <Menu as="div" className="relative inline-block text-left">
-          <div>
-            <Menu.Button>
-              <button className="border px-2 py-1  flex justify-center items-center rounded-full">
-                <SmileEmoji className=" h-5 w-5 text-gray-700" />
-                <span className="text-gray-700  text-xs ml-1">
-                  {totalReaction}
-                </span>
-              </button>
-            </Menu.Button>
-          </div>
+          <Menu.Button
+            as="button"
+            className="border px-2 py-1 flex justify-center items-center rounded-full"
+          >
+            <SmileEmoji className=" h-5 w-5 text-gray-700" />
+            <span className="text-gray-700 text-xs ml-1">{totalReaction}</span>
+          </Menu.Button>
           <Transition
             as={Fragment}
             enter="transition ease-out duration-100"
@@ -63,15 +61,12 @@ export const ReactionButton = ({
                       type="button"
                       onClick={() => isLogin && onClickReaction?.(reaction)}
                       title={reaction.name}
-                      className={`h-7 w-7 flex justify-center items-center hover:bg-gray-100 rounded-md
-                    ${
-                      myReactions?.find(
-                        (myReaction) => myReaction.name === reaction.name
-                      )
-                        ? "border-blue-500 bg-blue-100 border" // Thêm lớp CSS cho phản ứng trùng lặp
-                        : ""
-                    }
-                    `}
+                      className={classNames(
+                        "h-7 w-7 flex justify-center items-center hover:bg-gray-100 rounded-md",
+                        myReactions?.find(
+                          (myReaction) => myReaction.name === reaction.name
+                        ) && "border-blue-500 bg-blue-100 border"
+                      )}
                     >
                       {reaction.emoji}
                     </button>
@@ -93,15 +88,13 @@ export const ReactionButton = ({
               type="button"
               key={reaction.name}
               title={reaction.name}
-              className={`border px-2 py-1 flex justify-center items-center rounded-full ${
+              className={classNames(
+                "border px-2 py-1 flex justify-center items-center rounded-full",
                 myReactions?.find(
                   (myReaction) => myReaction.name === reaction.name
-                )
-                  ? "border-blue-500 bg-blue-100" // Thêm lớp CSS cho phản ứng trùng lặp
-                  : ""
-              }
-            ${handlingReaction ? " cursor-wait" : ""}
-            `}
+                ) && "border-blue-500 bg-blue-100",
+                handlingReaction && " cursor-wait"
+              )}
             >
               <span className="h-5 w-5 flex justify-center items-center">
                 {reaction?.emoji}

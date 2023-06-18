@@ -21,6 +21,7 @@ type Props = {
   loading: boolean;
   isButtonClose?: boolean;
   onClose?: () => void;
+  autoFocus?: boolean;
 };
 
 function loadSuggestions(text: string) {
@@ -64,6 +65,7 @@ export const CommentEditor = ({
   loading,
   isButtonClose,
   onClose,
+  autoFocus,
 }: Props) => {
   const { isLogin, isLoading } = useAuth();
   const [selectedTab, setSelectedTab] = React.useState<any>("write");
@@ -130,6 +132,7 @@ export const CommentEditor = ({
         }}
         childProps={{
           textArea: {
+            autoFocus: autoFocus,
             placeholder: "Viết bình luận của bạn",
           },
         }}

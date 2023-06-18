@@ -6,6 +6,7 @@ import { SmileEmoji } from "../icon_custom";
 import _ from "lodash";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
+import classNames from "classnames";
 type Props = {};
 
 export function PostItem({
@@ -48,9 +49,9 @@ export function PostItem({
                 return (
                   <li key={tag.slug} className={`text-gray-500  text-xs`}>
                     <span
-                      className={
-                        isContainTag ? "bg-blue-300 text-blue-800" : ""
-                      }
+                      className={classNames(
+                        isContainTag && "bg-blue-300 text-blue-800"
+                      )}
                     >
                       #{tag.slug}
                     </span>
