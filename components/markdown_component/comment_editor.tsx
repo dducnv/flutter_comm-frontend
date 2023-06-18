@@ -10,6 +10,7 @@ import { PaperClipIcon } from "@heroicons/react/24/outline";
 import { Refs } from "react-mde/lib/definitions/refs";
 import { BaseUserInfo } from "@/models/user/user";
 import classNames from "classnames";
+import { useAuth } from "@/hooks/use_auth";
 type Props = {
   blackWord?: string;
   isBlackWord?: boolean;
@@ -64,6 +65,7 @@ export const CommentEditor = ({
   isButtonClose,
   onClose,
 }: Props) => {
+  const { isLogin, isLoading } = useAuth();
   const [selectedTab, setSelectedTab] = React.useState<any>("write");
   React.useEffect(() => {
     const spanElement = document.querySelector(".image-tip span");
@@ -73,7 +75,10 @@ export const CommentEditor = ({
     }
   }, []);
   const save = async function* (data: any) {
-    console.log(data);
+    if (!isLogin) {
+      alert("Bạn cần đăng nhập để có thể tải ảnh lên");
+      return false;
+    }
     // Promise that waits for "time" milliseconds
     const wait = function (time: any) {
       return new Promise((a: any, r) => {
@@ -81,17 +86,9 @@ export const CommentEditor = ({
       });
     };
 
-    // Upload "data" to your server
-    // Use XMLHttpRequest.send to send a FormData object containing
-    // "data"
-    // Check this question: https://stackoverflow.com/questions/18055422/how-to-receive-php-image-data-over-copy-n-paste-javascript-with-xmlhttprequest
-
     await wait(2000);
-    // yields the URL that should be inserted in the markdown
     yield data;
     await wait(2000);
-
-    // returns true meaning that the save was successful
     return true;
   };
 
@@ -111,6 +108,7 @@ export const CommentEditor = ({
         </div>
       )}
       <ReactMde
+        readOnly={!isLogin}
         minEditorHeight={150}
         heightUnits="px"
         value={value}
@@ -157,7 +155,7 @@ export const CommentEditor = ({
             </button>
           )}
 
-          {loading && (
+          {loading || isLoading ? (
             <svg
               aria-hidden="true"
               role="status"
@@ -175,13 +173,13 @@ export const CommentEditor = ({
                 fill="currentColor"
               />
             </svg>
-          )}
+          ) : null}
           <button
-            onClick={loading ? undefined : onClick}
+            onClick={loading || !isLogin ? undefined : onClick}
             className={classNames(
               "bg-blue-500 text-white px-3 py-1 rounded-md",
               {
-                "opacity-50 cursor-not-allowed": loading,
+                "opacity-50 cursor-not-allowed": loading || !isLogin,
               }
             )}
           >

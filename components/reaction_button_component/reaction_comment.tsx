@@ -1,11 +1,8 @@
 "use client";
-import { BaseResponseModel } from "@/models/base_response";
 import { Reaction, ReactionResponse } from "@/models/reactions/reaction";
-import { postApi } from "@/untils/configs/api_client/post_api";
 import React, { useEffect, useState } from "react";
 import { ReactionButton } from "./reaction_button";
 import { ReactionAction, addReaction, removeReaction } from "./reaction_seed";
-import { add } from "lodash";
 import { commentApi } from "@/untils/configs/api_client/comment_api";
 
 type Props = {

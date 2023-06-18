@@ -9,6 +9,7 @@ import { commentApi } from "@/untils/configs/api_client/comment_api";
 import _ from "lodash";
 import { CommentItem } from "./comment_item";
 import { CommentEditor } from "../markdown_component/comment_editor";
+import { RequiredAuthcomponent } from "../auth_component/required_auth_component";
 
 type Props = {
   uuid: string;
@@ -116,17 +117,19 @@ export const CommentComponent = ({ uuid }: Props) => {
           )}
         </div>
         <hr className="mb-3 h-px border-t-0 bg-transparent bg-gradient-to-r from-transparent via-neutral-700 to-transparent opacity-25 dark:opacity-100" />
-        <CommentEditor
-          blackWord={blackWord}
-          isBlackWord={isBlackWord}
-          onChange={setValue}
-          onClick={() => {
-            handleUpComment();
-          }}
-          userSuggestion={[]}
-          value={value}
-          loading={loadingUpComments}
-        />
+        <RequiredAuthcomponent>
+          <CommentEditor
+            blackWord={blackWord}
+            isBlackWord={isBlackWord}
+            onChange={setValue}
+            onClick={() => {
+              handleUpComment();
+            }}
+            userSuggestion={[]}
+            value={value}
+            loading={loadingUpComments}
+          />
+        </RequiredAuthcomponent>
       </div>
     </>
   );

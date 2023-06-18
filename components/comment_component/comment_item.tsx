@@ -8,6 +8,7 @@ import { ReactionComment } from "../reaction_button_component/reaction_comment";
 import classNames from "classnames";
 import { CommentEditor } from "../markdown_component/comment_editor";
 import { commentApi } from "@/untils/configs/api_client/comment_api";
+import { RequiredAuthcomponent } from "../auth_component/required_auth_component";
 
 type Props = {
   comment: Comment;
@@ -109,7 +110,7 @@ export const CommentItem = ({ postUUID, comment: data }: Props) => {
             ))}
           </ol>
         </div>
-        <div className="px-3 pt-3 pb-3  border-t border-gray-300">
+        <div className="px-3 pt-3 pb-3  border-t border-gray-300  relative">
           {activeFormReply ? (
             <CommentEditor
               blackWord={blackWord}
@@ -125,11 +126,13 @@ export const CommentItem = ({ postUUID, comment: data }: Props) => {
               userSuggestion={[]}
             />
           ) : (
-            <input
-              onClick={() => setActiveFormReply(true)}
-              className="w-full bg-white p-2 border rounded-md"
-              placeholder="Trả lời bình luận"
-            />
+            <RequiredAuthcomponent>
+              <input
+                onClick={() => setActiveFormReply(true)}
+                className="w-full bg-white p-2 border rounded-md"
+                placeholder="Trả lời bình luận"
+              />
+            </RequiredAuthcomponent>
           )}
         </div>
       </div>

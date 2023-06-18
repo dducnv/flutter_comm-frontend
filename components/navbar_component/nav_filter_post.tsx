@@ -78,7 +78,7 @@ export const NavFilterPost = () => {
     <div className="flex w-full mb-5 space-x-3 justify-between">
       <div
         className={`flex items-center  md:px-0 px-1 ${
-          isLoading ? "md:w-7/12 w-full" : "md:w-9/12 w-full"
+          isLogin ? "md:w-7/12 w-full" : "md:w-9/12 w-full"
         }`}
       >
         <label htmlFor="simple-search" className="sr-only">
