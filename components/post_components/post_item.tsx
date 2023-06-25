@@ -68,13 +68,13 @@ export function PostItem({
           </div>
         </div>
         <div className="md:block hidden">
-          <div className="flex -space-x-1 hover:space-x-1 ">
+          <div className="flex -space-x-1 hover:space-x-0.5 ">
             <img
               className="inline-block h-5 w-5 rounded-full ring-2 ring-white "
               src={author?.avatar}
               title={author?.name}
             />
-            {_.map(usersComment, (item) => {
+            {_.map(usersComment.slice(0, 3), (item) => {
               if (item.username !== author?.username)
                 return (
                   <img
@@ -85,7 +85,7 @@ export function PostItem({
                   />
                 );
             })}
-            {usersComment.length > 2 ? (
+            {usersComment.length > 3 ? (
               <div className="h-5 w-5 rounded-full ring-2 ring-white backdrop-blur-xl bg-gray-300/10 flex justify-center items-center text-[10px]">
                 + {usersComment.length - 3}
               </div>
