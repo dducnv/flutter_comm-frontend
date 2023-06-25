@@ -13,10 +13,10 @@ export const Navbar = () => {
   const [isOpen, setIsOpen] = React.useState(false);
   const { profile, logout, isLoading, isLogin } = useAuth();
   useEffect(() => {
-    if (!isLogin) {
+    if (!isLoading && !isLogin) {
       setIsOpen(true);
     }
-  }, [isLogin]);
+  }, [isLoading]);
   useEffect(() => {
     if (!profile && !isLoading) {
       setTimeout(() => {
