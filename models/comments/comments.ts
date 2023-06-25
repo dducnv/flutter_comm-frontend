@@ -4,7 +4,7 @@ import { BaseUserInfo } from "../user/user";
 export interface Comment {
   uuid: string;
   content: string;
-  user: BaseUserInfo;
+  createdBy: BaseUserInfo;
   parentComment: any;
   replyCount: number;
   countReplyForParent: number;
@@ -12,4 +12,5 @@ export interface Comment {
   reactionResDto: ReactionResponse;
   createdAt: string;
   editedAt: any;
+  deleted: boolean;
 }

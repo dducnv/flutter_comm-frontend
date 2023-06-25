@@ -27,7 +27,7 @@ export default async function DetailsPost({
         <h1 className=" text-2xl text-gray-700">{post.title}</h1>
       </div>
       <div className="flex w-full space-x-3">
-        <div className="w-9/12">
+        <div className="md:w-9/12 w-full">
           <div className="border border-gray-300 p-3 bg-white rounded-lg">
             <div className="flex justify-between mb-3">
               <div className=" flex items-center space-x-2">
@@ -58,7 +58,7 @@ export default async function DetailsPost({
 
           <CommentComponent uuid={post.uuid!} />
         </div>
-        <div className="w-3/12">
+        <div className="md:block hidden md:w-3/12">
           <div className="pb-3 border-b">
             <h4 className="text-sm font-semibold text-gray-600">Danh mục</h4>
             <div className="flex items-center space-x-2 py-2">

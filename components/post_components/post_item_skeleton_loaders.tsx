@@ -16,7 +16,7 @@ export const PostItemSkeletonLoaders = () => {
             <div className="h-2 bg-slate-700  rounded col-span-1 w-[40%]" />
           </div>
         </div>
-        <div className="flex -space-x-1 overflow-hidden">
+        <div className="md:flex -space-x-1 overflow-hidden hidden">
           <div className="inline-block h-5 w-5 rounded-full ring-2 ring-white   border-white  bg-slate-700  " />
           <div className="inline-block h-5 w-5 rounded-full  ring-2 ring-white  border-white  bg-slate-700  " />
           <div className="inline-block h-5 w-5 rounded-full ring-2 ring-white  border-white  bg-slate-700  " />

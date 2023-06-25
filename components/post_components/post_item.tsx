@@ -25,7 +25,7 @@ export function PostItem({
   const { get } = useSearchParams();
   const tagsParams = get("tags");
   return (
-    <article className="w-full rounded-lg  border bg-gray-50  hover:border-2 border-gray-300  hover:bg-gray-100   cursor-pointer mb-2">
+    <article className="w-full rounded-lg  border bg-gray-50  md:hover:border-2 border-gray-300  hover:bg-gray-100   cursor-pointer mb-2">
       <div className="flex items-center justify-between h-full py-2">
         <div className="md:flex w-1/12 hidden   items-center px-3">
           <div className="border px-1 py-1 max-w-[100px] flex justify-center items-center rounded-full">

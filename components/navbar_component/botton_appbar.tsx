@@ -3,11 +3,13 @@ import React from "react";
 import {
   ChatBubbleLeftIcon,
   QuestionMarkCircleIcon,
+  ArrowRightOnRectangleIcon,
 } from "@heroicons/react/24/outline";
+import { RequiredAuthcomponent } from "../auth_component/required_auth_component";
 type Props = {};
 
 export function BottonAppbar({}: Props) {
-  const { profile, logout, isLoading, isLogin } = useAuth();
+  const { profile, logout, isLogin } = useAuth();
   return (
     <div className="fixed bottom-0 z-50 w-full -translate-x-1/2 bg-white border-t border-gray-200 left-1/2 ">
       <div className="grid h-full max-w-lg grid-cols-5 mx-auto">
@@ -115,17 +117,26 @@ export function BottonAppbar({}: Props) {
           Search
           <div className="tooltip-arrow" data-popper-arrow="" />
         </div>
-        <button
-          data-tooltip-target="tooltip-settings"
-          type="button"
-          className="inline-flex flex-col items-center justify-center p-4 hover:bg-gray-50  group"
-        >
-          <img
-            src={profile?.avatar}
-            className="w-8 h-8 rounded-full"
-            alt={profile?.name}
-          />
-        </button>
+        {isLogin ? (
+          <button
+            onClick={() => logout()}
+            data-tooltip-target="tooltip-settings"
+            type="button"
+            className="inline-flex flex-col items-center justify-center p-4 hover:bg-gray-50  group"
+          >
+            <img
+              src={profile?.avatar}
+              className="w-8 h-8 rounded-full"
+              alt={profile?.name}
+            />
+          </button>
+        ) : (
+          <div className="inline-flex flex-col items-center justify-center p-4 hover:bg-gray-50  group">
+            <RequiredAuthcomponent>
+              <ArrowRightOnRectangleIcon className="w-6 h-6" />
+            </RequiredAuthcomponent>
+          </div>
+        )}
       </div>
     </div>
   );

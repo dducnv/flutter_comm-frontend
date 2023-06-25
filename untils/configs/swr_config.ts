@@ -6,13 +6,11 @@ const fetcher = async (...args: Parameters<typeof fetch>) => {
 };
 
 export function useSWRConfig(path: string, options?: any) {
-  const { data, error, mutate } = useSWR(
-    `https://fluttercommunityvn.vercel.app/api/${path}`,
-    fetcher,
-    {
-      ...options,
-    }
-  );
+  const URL = "https://fluttercommunityvn.vercel.app/api/";
+  const DevURL = "http://localhost:3000/api/";
+  const { data, error, mutate } = useSWR(`${URL}${path}`, fetcher, {
+    ...options,
+  });
   return {
     data,
     error,

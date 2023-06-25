@@ -14,13 +14,13 @@ export const CommentReplyItem = ({ commentReply }: Props) => {
       <span className="absolute flex items-center justify-center w-8 h-8  rounded-full -left-4">
         <img
           className="rounded-full shadow-lg"
-          src={commentReply.user.avatar}
-          alt="Bonnie image"
+          src={commentReply.createdBy.avatar}
+          alt={commentReply.createdBy.name}
         />
       </span>
       <div className="flex justify-between mb-3 ">
         <div className=" flex items-center space-x-2">
-          <span className=" font-semibold">{commentReply.user.name}</span>
+          <span className=" font-semibold">{commentReply.createdBy.name}</span>
           <span className="text-gray-600 text-xs">
             {commentReply.createdAt}
           </span>

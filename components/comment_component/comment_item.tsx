@@ -1,5 +1,6 @@
 import { Comment } from "@/models/comments/comments";
 import { EllipsisHorizontalIcon } from "@heroicons/react/24/outline";
+import { v4 as uuidv4 } from "uuid";
 import React from "react";
 import { SmileEmoji } from "../icon_custom";
 import { CommentReplyItem } from "./comment_reply_item";
@@ -39,12 +40,13 @@ export const CommentItem = ({ postUUID, comment: data }: Props) => {
               reactions: [],
               myReactions: [],
             },
-            user: res?.data?.user,
+            createdBy: res?.data?.createdBy,
             parentComment: res?.data?.parentComment,
             replyCount: res?.data?.replyCount,
             countReplyForParent: res?.data?.countReplyForParent,
             replies: res?.data?.replies,
             editedAt: res?.data?.editedAt,
+            deleted: false,
           };
 
           if (res) {
@@ -78,24 +80,30 @@ export const CommentItem = ({ postUUID, comment: data }: Props) => {
         <div className="flex justify-between mb-3 ">
           <div className=" flex items-center space-x-2">
             <img
-              src={comment.user.avatar}
+              src={comment.createdBy.avatar}
               className="w-8 h-8 rounded-full"
-              alt="Bonnie image"
+              alt={comment.createdBy.name}
             />
-            <span className=" font-semibold">{comment.user.name}</span>
+            <span className=" font-semibold">{comment.createdBy.name}</span>
             <span className="text-gray-600 text-xs">{comment.createdAt}</span>
           </div>
-          <button>
-            <EllipsisHorizontalIcon className="h-5 w-5 text-gray-500" />
-          </button>
+          <div>
+            {!comment.deleted && (
+              <button>
+                <EllipsisHorizontalIcon className="h-5 w-5 text-gray-500" />
+              </button>
+            )}
+          </div>
         </div>
         <article>{comment.content}</article>
-        <div className="mt-3">
-          <ReactionComment
-            commentUUID={comment.uuid}
-            reactionsOfComment={comment.reactionResDto}
-          />
-        </div>
+        {!comment.deleted && (
+          <div className="mt-3">
+            <ReactionComment
+              commentUUID={comment.uuid}
+              reactionsOfComment={comment.reactionResDto}
+            />
+          </div>
+        )}
       </div>
       <div
         className={classNames(
@@ -108,37 +116,39 @@ export const CommentItem = ({ postUUID, comment: data }: Props) => {
             {_.map(comment.replies, (commentReply: Comment, index) => (
               <CommentReplyItem
                 commentReply={commentReply}
-                key={commentReply.uuid + index}
+                key={commentReply.uuid + uuidv4()}
               />
             ))}
           </ol>
         </div>
-        <div className="px-3 pt-3 pb-3  border-t border-gray-300  relative">
-          {activeFormReply ? (
-            <CommentEditor
-              blackWord={blackWord}
-              isBlackWord={isBlackWord}
-              value={value}
-              autoFocus={true}
-              onChange={setValue}
-              loading={loadingUpComments}
-              onClick={() => {
-                handlePostCommentReply();
-              }}
-              isButtonClose={true}
-              onClose={() => setActiveFormReply(false)}
-              userSuggestion={[]}
-            />
-          ) : (
-            <RequiredAuthcomponent>
-              <input
-                onClick={() => setActiveFormReply(true)}
-                className="w-full bg-white p-2 border rounded-md"
-                placeholder="Trả lời bình luận"
+        {!comment.deleted && (
+          <div className="px-3 pt-3 pb-3  border-t border-gray-300  relative">
+            {activeFormReply ? (
+              <CommentEditor
+                blackWord={blackWord}
+                isBlackWord={isBlackWord}
+                value={value}
+                autoFocus={true}
+                onChange={setValue}
+                loading={loadingUpComments}
+                onClick={() => {
+                  handlePostCommentReply();
+                }}
+                isButtonClose={true}
+                onClose={() => setActiveFormReply(false)}
+                userSuggestion={[]}
               />
-            </RequiredAuthcomponent>
-          )}
-        </div>
+            ) : (
+              <RequiredAuthcomponent>
+                <input
+                  onClick={() => setActiveFormReply(true)}
+                  className="w-full bg-white p-2 border rounded-md"
+                  placeholder="Trả lời bình luận"
+                />
+              </RequiredAuthcomponent>
+            )}
+          </div>
+        )}
       </div>
     </div>
   );
