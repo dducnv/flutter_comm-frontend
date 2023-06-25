@@ -16,7 +16,7 @@ export const Navbar = () => {
     if (!isLoading && !isLogin) {
       setIsOpen(true);
     }
-  }, [isLoading]);
+  }, [isLoading, isLogin]);
   useEffect(() => {
     if (!profile && !isLoading) {
       setTimeout(() => {
