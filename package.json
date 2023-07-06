@@ -19,8 +19,10 @@
     "classnames": "^2.3.2",
     "eslint": "8.41.0",
     "eslint-config-next": "13.4.4",
+    "gray-matter": "^4.0.3",
     "js-cookie": "^3.0.5",
     "lodash": "^4.17.21",
+    "mdast-util-to-string": "^3.2.0",
     "next": "13.4.4",
     "postcss": "8.4.23",
     "react": "18.2.0",
@@ -29,16 +31,21 @@
     "react-markdown": "^8.0.7",
     "react-mde": "^11.5.0",
     "react-multi-select-component": "^4.3.4",
+    "react-syntax-highlighter": "^15.5.0",
+    "remark": "^14.0.3",
     "remark-gfm": "^3.0.1",
     "showdown": "^2.1.0",
     "swr": "^2.1.5",
     "tailwindcss": "3.3.2",
     "typescript": "5.0.4",
+    "unist-util-visit": "^4.1.2",
     "uuid": "^9.0.0"
   },
   "devDependencies": {
+    "@tailwindcss/typography": "^0.5.9",
     "@types/js-cookie": "^3.0.3",
     "@types/lodash": "^4.14.195",
+    "@types/react-syntax-highlighter": "^15.5.7",
     "@types/showdown": "^2.0.1",
     "@types/uuid": "^9.0.2"
   }

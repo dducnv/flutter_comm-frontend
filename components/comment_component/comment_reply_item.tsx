@@ -1,9 +1,9 @@
-import { EllipsisHorizontalIcon } from "@heroicons/react/24/outline";
 import React from "react";
-import { SmileEmoji } from "../icon_custom";
+import { EllipsisHorizontalIcon } from "@heroicons/react/24/outline";
 import { Comment } from "@/models/comments/comments";
 import { ReactionComment } from "../reaction_button_component/reaction_comment";
-
+import { MarkdownView } from "../markdown_component/markdown_view";
+import CommentMarkdown from "./comment_markdown";
 type Props = {
   commentReply: Comment;
 };
@@ -30,7 +30,7 @@ export const CommentReplyItem = ({ commentReply }: Props) => {
         </button>
       </div>
       <div className=" p-3 bg-white border border-gray-200 rounded-md ">
-        {commentReply.content}
+        <CommentMarkdown content={commentReply.content} />
         <div className="mt-3 ">
           <ReactionComment
             commentUUID={commentReply.uuid}

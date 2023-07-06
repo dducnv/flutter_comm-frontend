@@ -1,16 +1,17 @@
-import { Comment } from "@/models/comments/comments";
-import { EllipsisHorizontalIcon } from "@heroicons/react/24/outline";
-import { v4 as uuidv4 } from "uuid";
 import React from "react";
-import { SmileEmoji } from "../icon_custom";
-import { CommentReplyItem } from "./comment_reply_item";
 import _ from "lodash";
-import { ReactionComment } from "../reaction_button_component/reaction_comment";
 import classNames from "classnames";
+import { v4 as uuidv4 } from "uuid";
+
+import { EllipsisHorizontalIcon } from "@heroicons/react/24/outline";
+import { Comment } from "@/models/comments/comments";
+import { CommentReplyItem } from "./comment_reply_item";
+import { ReactionComment } from "../reaction_button_component/reaction_comment";
 import { CommentEditor } from "../markdown_component/comment_editor";
 import { commentApi } from "@/untils/configs/api_client/comment_api";
 import { RequiredAuthcomponent } from "../auth_component/required_auth_component";
-
+import { MarkdownView } from "../markdown_component/markdown_view";
+import CommentMarkdown from "./comment_markdown";
 type Props = {
   comment: Comment;
   postUUID: string;
@@ -95,7 +96,7 @@ export const CommentItem = ({ postUUID, comment: data }: Props) => {
             )}
           </div>
         </div>
-        <article>{comment.content}</article>
+        <CommentMarkdown content={comment.content} />
         {!comment.deleted && (
           <div className="mt-3">
             <ReactionComment

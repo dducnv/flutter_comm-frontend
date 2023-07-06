@@ -11,6 +11,8 @@ import { Refs } from "react-mde/lib/definitions/refs";
 import { BaseUserInfo } from "@/models/user/user";
 import classNames from "classnames";
 import { useAuth } from "@/hooks/use_auth";
+import { MarkdownView } from "./markdown_view";
+import CommentMarkdown from "../comment_component/comment_markdown";
 type Props = {
   blackWord?: string;
   isBlackWord?: boolean;
@@ -120,15 +122,12 @@ export const CommentEditor = ({
         // @ts-ignore
         loadSuggestions={loadSuggestions}
         generateMarkdownPreview={(markdown) => {
-          console.log(markdown);
           // @ts-ignore
           if (markdown == "")
             return Promise.resolve(
               <p className="text-gray-500">Không có gì để hiển thị</p>
             );
-          return Promise.resolve(
-            <ReactMarkdown children={markdown} remarkPlugins={[remarkGfm]} />
-          );
+          return Promise.resolve(<CommentMarkdown content={markdown} />);
         }}
         childProps={{
           textArea: {

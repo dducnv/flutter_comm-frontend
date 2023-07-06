@@ -214,3 +214,37 @@ editor comment
 .editor-container .react-mde .image-tip {
      border-top: none !important;
 }
+
+@media screen and (max-width: 700px) {
+     .editor-container .react-mde .mde-header .mde-header-group{
+          display: none !important;
+     }
+}
+
+/* table-of-content */
+ol.table-of-content {
+     list-style-type: none;
+     counter-reset: item;
+     margin: 0;
+     padding: 0;
+}
+
+ol.table-of-content>li.table-of-content-item {
+     display: table;
+     counter-increment: item;
+     margin-bottom: 0.6em;
+}
+
+ol.table-of-content>li.table-of-content-item:before {
+     content: counters(item, ".") ". ";
+     display: table-cell;
+     padding-right: 0.6em;
+}
+
+li.table-of-content-item ol.table-of-content>li.table-of-content-item {
+     margin: 0;
+}
+
+li.table-of-content-item ol.table-of-content>li.table-of-content-item:before {
+     content: counters(item, ".") " ";
+}

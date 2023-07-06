@@ -7,6 +7,7 @@ import _ from "lodash";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import classNames from "classnames";
+import { routerPathChange } from "@/untils/route/route_config";
 type Props = {};
 
 export function PostItem({
@@ -34,8 +35,12 @@ export function PostItem({
           </div>
         </div>
         <div className="md:w-8/12 w-full px-3">
-          <Link href={`/posts/${slug}`}>
-            <h3 className="text-gray-700 text-[16px] font-[600] inline-block ">
+          <Link
+            href={`/details/${routerPathChange({
+              categorySlug: category.slug,
+            })}/${slug}`}
+          >
+            <h3 className="text-gray-700 text-[16px] font-[600] inline-block  hover:text-blue-600 ">
               {title}
             </h3>
           </Link>
