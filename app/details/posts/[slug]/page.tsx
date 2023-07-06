@@ -8,7 +8,7 @@ import { MarkdownView } from "@/components/markdown_component/markdown_view";
 
 async function getPostDetails(slug: string) {
   const res = await appApi.get(`/posts/${slug}/details`, {
-    revalidate: 60 * 60 * 24,
+    revalidate: 2 * 60,
     // 60 * 60 * 24
   });
   return res.json();
