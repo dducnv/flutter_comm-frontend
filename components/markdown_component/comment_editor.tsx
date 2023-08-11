@@ -82,6 +82,8 @@ export const CommentEditor = ({
         "Click vào đây hoặc kéo ảnh từ tệp vào ô để tải ảnh lên.";
     }
   }, []);
+
+  const isButtonActive = value.trim().length > 0;
   const save = async function* (data: any) {
     if (!isLogin) {
       alert("Bạn cần đăng nhập để có thể tải ảnh lên");
@@ -182,11 +184,14 @@ export const CommentEditor = ({
             </svg>
           ) : null}
           <button
-            onClick={loading || !isLogin ? undefined : onClick}
+            onClick={
+              loading || !isLogin || !isButtonActive ? undefined : onClick
+            }
             className={classNames(
               "bg-blue-500 text-white px-3 py-1 rounded-md",
               {
-                "opacity-50 cursor-not-allowed": loading || !isLogin,
+                "opacity-50 cursor-not-allowed":
+                  loading || !isLogin || !isButtonActive,
               }
             )}
           >

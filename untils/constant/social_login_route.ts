@@ -1,6 +1,6 @@
-// export const OAUTH2_REDIRECT_URI = "http://localhost:3000/api/auth/social";
-export const OAUTH2_REDIRECT_URI =
-  "https://fluttercommunityvn.vercel.app/api/auth/social";
+export const OAUTH2_REDIRECT_URI = "http://localhost:3000/api/auth/social";
+// export const OAUTH2_REDIRECT_URI =
+//   "https://fluttercommunityvn.vercel.app/api/auth/social";
 
 //oauth 2 redirect
 export const GOOGLE_AUTH_URL =
