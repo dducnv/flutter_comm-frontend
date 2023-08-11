@@ -1,7 +1,11 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import { useRouter, useSearchParams, usePathname } from "next/navigation";
-import { XMarkIcon } from "@heroicons/react/24/outline";
+import {
+  XMarkIcon,
+  PencilSquareIcon,
+  ChevronDownIcon,
+} from "@heroicons/react/24/outline";
 import Link from "next/link";
 import { MultiSelect } from "react-multi-select-component";
 import { useTags } from "@/hooks/use_tags";
@@ -9,6 +13,8 @@ import { TagModel } from "@/models/tags/tag";
 import _ from "lodash";
 import { useAuth } from "@/hooks/use_auth";
 import classNames from "classnames";
+import { FormAddNewQuestion } from "../popup_component/form_add_new_question/form_add_new";
+import { Menu, Transition } from "@headlessui/react";
 
 export const NavFilterPost = () => {
   const { get } = useSearchParams();
@@ -17,6 +23,8 @@ export const NavFilterPost = () => {
   const { tags, isLoading } = useTags();
   const { isLogin, isLoading: profileLoading } = useAuth();
   const [selected, setSelected] = useState<any[]>([]);
+  const [openFormAddQuestion, setOpenFormAddQuestion] =
+    useState<boolean>(false);
   const keyword = get("q");
   const tagParam = get("tags");
   const [value, setValue] = useState("");
@@ -83,6 +91,13 @@ export const NavFilterPost = () => {
           giá trị về mặt kiến thức
         </span>
       </div>
+      {/* <button className=" w-11 h-11 flex justify-center items-center bg-blue-600 rounded-full fixed bottom-14 right-20">
+        <PencilSquareIcon className="h-5 w-5 text-white m-auto" />
+      </button> */}
+      <FormAddNewQuestion
+        isOpen={openFormAddQuestion}
+        setIsOpen={setOpenFormAddQuestion}
+      />
 
       <div className="flex w-full mb-5 space-x-3 justify-between">
         <div
@@ -153,13 +168,51 @@ export const NavFilterPost = () => {
           />
         </div>
         {isLogin && (
-          <Link
-            href={"/posts/new"}
-            type="button"
-            className="text-white md:flex hidden text-center w-2/12 bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-6 h-[42px] justify-center items-center "
-          >
-            Tạo bài viết
-          </Link>
+          <Menu as="div" className="relative  text-left  w-2/12">
+            <Menu.Button className="text-white md:flex w-full hidden text-center bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-6 h-[42px] justify-center items-center ">
+              Thêm mới
+              <ChevronDownIcon
+                className=" ml-3 -mr-1 h-5 w-5 text-violet-200 hover:text-violet-100"
+                aria-hidden="true"
+              />
+            </Menu.Button>
+            <Transition
+              as={Fragment}
+              enter="transition ease-out duration-100"
+              enterFrom="transform opacity-0 scale-95"
+              enterTo="transform opacity-100 scale-100"
+              leave="transition ease-in duration-75"
+              leaveFrom="transform opacity-100 scale-100"
+              leaveTo="transform opacity-0 scale-95"
+            >
+              <Menu.Items className="absolute right-0 mt-2 w-56 text-left origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                <div className="px-1 py-1  ">
+                  <Menu.Item>
+                    {({ active }) => (
+                      <button
+                        onClick={() => setOpenFormAddQuestion(true)}
+                        className={`px-3 py-2 text-center rounded-md hover:bg-gray-200 w-full text-sm text-gray-700 `}
+                      >
+                        Câu hỏi || Thảo luận
+                      </button>
+                    )}
+                  </Menu.Item>
+                  <Menu.Item>
+                    {({ active }) => (
+                      <button
+                        onClick={() => {
+                          push("/new/fast-food");
+                        }}
+                        className={`px-3 py-2 text-center rounded-md hover:bg-gray-200 w-full text-sm text-gray-700 `}
+                      >
+                        Fast-Food
+                      </button>
+                    )}
+                  </Menu.Item>
+                </div>
+              </Menu.Items>
+            </Transition>
+          </Menu>
         )}
       </div>
     </>

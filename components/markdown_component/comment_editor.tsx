@@ -18,12 +18,14 @@ type Props = {
   isBlackWord?: boolean;
   onChange: (value: string) => void;
   onClick: () => void;
-  userSuggestion: BaseUserInfo[];
+  userSuggestion?: BaseUserInfo[];
   value: string;
   loading: boolean;
   isButtonClose?: boolean;
   onClose?: () => void;
   autoFocus?: boolean;
+  isSuggestUser?: boolean;
+  isDisablePreview?: boolean;
 };
 
 function loadSuggestions(text: string) {
@@ -68,6 +70,8 @@ export const CommentEditor = ({
   isButtonClose,
   onClose,
   autoFocus,
+  isSuggestUser,
+  isDisablePreview,
 }: Props) => {
   const { isLogin, isLoading } = useAuth();
   const [selectedTab, setSelectedTab] = React.useState<any>("write");
@@ -75,7 +79,7 @@ export const CommentEditor = ({
     const spanElement = document.querySelector(".image-tip span");
     if (spanElement) {
       spanElement.textContent =
-        "Click vào đây hoặc kéo ảnh từ tệp vào ô bình luận để tải ảnh lên.";
+        "Click vào đây hoặc kéo ảnh từ tệp vào ô để tải ảnh lên.";
     }
   }, []);
   const save = async function* (data: any) {
@@ -106,7 +110,7 @@ export const CommentEditor = ({
       {isBlackWord && (
         <div className="flex items-center">
           <span className="text-gray-600 font-semibold text-sm mr-2">
-            Bình luận chứa từ cấm:{" "}
+            Nội dung chứa từ cấm:{" "}
           </span>
           <span className="text-red-500 text-sm">{blackWord}</span>
         </div>
@@ -119,6 +123,7 @@ export const CommentEditor = ({
         onChange={onChange}
         selectedTab={selectedTab}
         onTabChange={setSelectedTab}
+        disablePreview={isDisablePreview}
         // @ts-ignore
         loadSuggestions={loadSuggestions}
         generateMarkdownPreview={(markdown) => {
@@ -132,7 +137,7 @@ export const CommentEditor = ({
         childProps={{
           textArea: {
             autoFocus: autoFocus,
-            placeholder: "Viết bình luận của bạn",
+            placeholder: "Viết nội của bạn",
           },
         }}
         paste={{

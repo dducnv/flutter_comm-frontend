@@ -45,7 +45,7 @@ function OutsideAlerter(props) {
   return <div ref={wrapperRef}>{props.children}</div>;
 }
 
-export class Multiselect extends React.Component<IMultiselectProps, any> {
+export class MultiselectCustom extends React.Component<IMultiselectProps, any> {
   static defaultProps: IMultiselectProps;
   constructor(props) {
     super(props);
@@ -424,37 +424,6 @@ export class Multiselect extends React.Component<IMultiselectProps, any> {
     }
     return (
       <ul className={`optionContainer`} style={style["optionContainer"]}>
-        <li>
-          <div className="px-2 py-1">
-            <input
-              type="text"
-              className="w-full border"
-              //     autoFocus
-              ref={this.searchBox}
-              disabled={false}
-              //   className={` bg-transparent outline-none shadow-none  ${
-              //     singleSelect && selectedValues.length ? "display-none" : ""
-              //   }`}
-              //   id={`${id || "search"}_input`}
-              //   name={`${name || "search_name"}_input`}
-              onChange={this.onChange}
-              //     onKeyPress={this.onKeyPress}
-              //   value={inputValue}
-              onFocus={this.onFocus}
-              onBlur={this.onBlur}
-              //   placeholder={
-              //     (singleSelect && selectedValues.length) ||
-              //     (hidePlaceholder && selectedValues.length)
-              //       ? ""
-              //       : placeholder
-              //   }
-              //     onKeyDown={this.onArrowKeyNavigation}
-              //     style={style["inputField"]}
-              //     autoComplete="off"
-              //   disabled={singleSelect || disable}
-            />
-          </div>
-        </li>
         {options.length === 0 && (
           <span style={style["notFound"]} className={`notFound`}>
             {emptyRecordMsg}
@@ -565,9 +534,9 @@ export class Multiselect extends React.Component<IMultiselectProps, any> {
     const { selectedValues, closeIconType } = this.state;
     return selectedValues.map((value, index) => (
       <span
-        className={` inline-flex items-center px-1 py-1 bg-blue-400 text-xs mr-2    ${
-          singleSelect && "singleChip"
-        } ${this.isDisablePreSelectedValues(value) && "disableSelection"}`}
+        className={`chip  ${singleSelect && "singleChip"} ${
+          this.isDisablePreSelectedValues(value) && "disableSelection"
+        }`}
         key={index}
         style={style["chips"]}
       >
@@ -577,9 +546,10 @@ export class Multiselect extends React.Component<IMultiselectProps, any> {
         )}
         {!this.isDisablePreSelectedValues(value) &&
           (!customCloseIcon ? (
-            <XCircleIcon
+            <img
+              className="icon_cancel closeIcon"
+              src={closeIconType}
               onClick={() => this.onRemoveSelectedItem(value)}
-              className="w-4 h-4  text-gray-700 cursor-pointer"
             />
           ) : (
             <i
@@ -700,30 +670,25 @@ export class Multiselect extends React.Component<IMultiselectProps, any> {
     } = this.props;
     return (
       <div
-        className={` min-w-[300px]  p-2.5 relative w-full ${
+        className={`multiselect-container multiSelectContainer ${
           disable ? `disable_ms` : ""
         } ${className || ""}`}
         id={id || "multiselectContainerReact"}
         style={style["multiselectContainer"]}
       >
         <div
-          onFocus={this.onFocus}
-          onBlur={this.onBlur}
-          className={classNames(
-            "p-2.5 rounded-lg bg-gray-50 min-w-[300px]  border border-gray-300 z-10 text-gray-700  ",
-            singleSelect && "singleSelect"
-          )}
+          className={`search-wrapper searchWrapper ${
+            singleSelect ? "singleSelect" : ""
+          }`}
           ref={this.searchWrapper}
           style={style["searchBox"]}
           onClick={singleSelect ? this.toggelOptionList : () => {}}
         >
           {!hideSelectedList && this.renderSelectedList()}
-          {selectedValues.length === 0 && <div>Select</div>}
-
-          {/* <input
+          <input
             type="text"
             ref={this.searchBox}
-            className={` bg-transparent outline-none shadow-none  ${
+            className={`searchBox ${
               singleSelect && selectedValues.length ? "display-none" : ""
             }`}
             id={`${id || "search"}_input`}
@@ -743,21 +708,21 @@ export class Multiselect extends React.Component<IMultiselectProps, any> {
             style={style["inputField"]}
             autoComplete="off"
             disabled={singleSelect || disable}
-          /> */}
+          />
           {(singleSelect || showArrow) && (
             <>
-              <ChevronUpDownIcon
-                onClick={this.onFocus}
-                className="icon_down_dir w-5 h-5  text-gray-700"
-              />
+              {customArrow ? (
+                <span className="icon_down_dir">{customArrow}</span>
+              ) : (
+                <img src={DownArrow} className={`icon_cancel icon_down_dir`} />
+              )}
             </>
           )}
         </div>
         <div
-          className={classNames(
-            "optionListContainer",
+          className={`optionListContainer ${
             toggleOptionsList ? "displayBlock" : "displayNone"
-          )}
+          }`}
           onMouseDown={(e) => {
             e.preventDefault();
           }}
@@ -777,7 +742,7 @@ export class Multiselect extends React.Component<IMultiselectProps, any> {
   }
 }
 
-Multiselect.defaultProps = {
+MultiselectCustom.defaultProps = {
   options: [],
   disablePreSelectedValues: false,
   selectedValues: [],

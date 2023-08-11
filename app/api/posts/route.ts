@@ -16,3 +16,10 @@ export async function GET(request: NextRequest) {
   const posts = await res.json();
   return NextResponse.json(posts);
 }
+
+export async function POST(request: NextRequest) {
+  const body = await request.json();
+  const res = await appApi.post(POST_API_URL, body);
+  const posts = await res.json();
+  return NextResponse.json(posts);
+}

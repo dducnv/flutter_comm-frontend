@@ -1,13 +1,9 @@
 "use client";
 import React, { useEffect } from "react";
-import { useAuth } from "@/hooks/use_auth";
-import {
-  ArrowLeftOnRectangleIcon,
-  ArrowRightOnRectangleIcon,
-} from "@heroicons/react/24/outline";
-import { GOOGLE_AUTH_URL } from "@/untils/constant/social_login_route";
-import { useRouter } from "next/navigation";
 import Link from "next/link";
+import { ArrowRightOnRectangleIcon } from "@heroicons/react/24/outline";
+import { useAuth } from "@/hooks/use_auth";
+import { GOOGLE_AUTH_URL } from "@/untils/constant/social_login_route";
 import { AuthPopup } from "../auth_component/auth_popup";
 export const Navbar = () => {
   const [isOpen, setIsOpen] = React.useState(false);

@@ -1,7 +1,7 @@
 import { Navbar } from "@/components/navbar_component/navbar";
 import "./globals.css";
 import { Roboto } from "next/font/google";
-
+import { Toaster } from "sonner";
 const roboto = Roboto({
   subsets: ["vietnamese"],
   weight: "400",
@@ -23,6 +23,7 @@ export default function RootLayout({
         suppressHydrationWarning={true}
         className={`${roboto.className} bg-slate-100`}
       >
+        <Toaster position="top-right" />
         <Navbar />
         {children}
       </body>

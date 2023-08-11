@@ -2,6 +2,75 @@
 @tailwind components;
 @tailwind utilities;
 
+.multiSelectContainer{
+     background-color: #fff;
+}
+.multiSelectContainer .searchWrapper{
+     padding: 10px 10px;
+}
+.multiSelectContainer .searchWrapper input.searchBox {
+     border-radius: 5px;
+}
+
+.multiSelectContainer .optionListContainer {
+     width: 50%;
+}
+
+.filter .multiSelectContainer .optionListContainer {
+     width: 80%;
+}
+
+.multiSelectContainer .optionListContainer .optionContainer li.option.highlightOption {
+     background-color: #fff !important;
+     color: black;
+}
+
+.multiSelectContainer .optionListContainer .optionContainer li.option {
+     font-weight: 500;
+     line-height: 24px;
+}
+
+.multiSelectContainer .optionListContainer .optionContainer li.option:hover {
+     background-color: #f3f3f3 !important;
+     color: #2f3ab2;
+     font-weight: 500;
+}
+
+/* CSSTransition classes  */
+.menu-primary-enter {
+     position: absolute;
+     transform: translateX(-110%);
+}
+
+.menu-primary-enter-active {
+     transform: translateX(0%);
+     transition: all var(--speed) ease;
+}
+
+.menu-primary-exit {
+     position: absolute;
+}
+
+.menu-primary-exit-active {
+     transform: translateX(-110%);
+     transition: all var(--speed) ease;
+}
+
+
+.menu-secondary-enter {
+     transform: translateX(110%);
+}
+
+.menu-secondary-enter-active {
+     transform: translateX(0%);
+     transition: all var(--speed) ease;
+}
+
+.menu-secondary-exit-active {
+     transform: translateX(110%);
+     transition: all var(--speed) ease;
+}
+
 .multiSelectContainer,
 .multiSelectContainer *,
 .multiSelectContainer ::after,
@@ -205,6 +274,11 @@ editor comment
 
 }
 
+.post-editor .editor-container .react-mde .mde-textarea-wrapper textarea {
+     min-height: 300px;;
+
+}
+
 
 .editor-container .react-mde .mde-preview {
      background-color: #fff !important;
@@ -247,4 +321,8 @@ li.table-of-content-item ol.table-of-content>li.table-of-content-item {
 
 li.table-of-content-item ol.table-of-content>li.table-of-content-item:before {
      content: counters(item, ".") " ";
+}
+
+.fast-food-desc{
+     min-height: 100px;
 }

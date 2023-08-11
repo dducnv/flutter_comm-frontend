@@ -8,8 +8,8 @@ export const sidebarMenuList = [
     path: "/home/discussions",
   },
   {
-    title: "✍🏼 Bài viết & Chia sẻ",
-    path: "/home/posts",
+    title: "🍔 Fast-Foods",
+    path: "/home/fast-foods",
   },
   {
     title: "🧑‍💻 Giới thiệu",

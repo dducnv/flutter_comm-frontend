@@ -1,5 +1,5 @@
 "use client";
-import { SidebarMenu } from "@/components/common_component/sidebar_menu_component";
+import { SidebarMenu } from "@/components/sidebar_component/sidebar_menu_component";
 import { BottonAppbar } from "@/components/navbar_component/botton_appbar";
 import { NavFilterPost } from "@/components/navbar_component/nav_filter_post";
 import { usePathname, useSearchParams } from "next/navigation";
