@@ -20,6 +20,6 @@ export const postApi = {
   },
 
   async createNewPost(body: PostSaveModel) {
-    return await axiosConfig.post<PostModel>("/posts", body);
+    return await axiosConfig.post<any>("/posts", body);
   },
 };

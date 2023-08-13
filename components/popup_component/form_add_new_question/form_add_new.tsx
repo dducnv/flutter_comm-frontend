@@ -11,6 +11,7 @@ import { CommentEditor } from "@/components/markdown_component/comment_editor";
 import { PostSaveModel } from "@/models/posts/post_save";
 import { postApi } from "@/untils/configs/api_client/post_api";
 import { useRouter } from "next/navigation";
+import { routerPathChange } from "@/untils/route/route_config";
 
 type Props = {
   isOpen: boolean;
@@ -49,6 +50,17 @@ export const FormAddNewQuestion = ({ isOpen, setIsOpen }: Props) => {
     }
   }
 
+  function categoryChangeToSlug(categorySlug: string) {
+    switch (categorySlug) {
+      case "cau-hoi":
+        return "question";
+      case "thao-luan":
+        return "discussion";
+      default:
+        return "";
+    }
+  }
+
   async function onCreate() {
     setBlackWord("");
     let validate = validateForm(dataSend);
@@ -61,12 +73,14 @@ export const FormAddNewQuestion = ({ isOpen, setIsOpen }: Props) => {
         toast.error("Tạo thất bại");
         return;
       }
-      if (result.data === true) {
+      if (result.data?.slug) {
         toast.success("Tạo thành công");
         setIsOpen(false);
         setCreateLoading(false);
         resetForm();
-        push("/");
+
+        push(`/details/${categoryChangeToSlug(category)}/${result.data?.slug}`);
+        return;
       }
       setCreateLoading(false);
       toast.error("Tạo thất bại");

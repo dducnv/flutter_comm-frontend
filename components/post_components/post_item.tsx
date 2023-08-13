@@ -8,6 +8,7 @@ import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import classNames from "classnames";
 import { routerPathChange } from "@/untils/route/route_config";
+import { abbrNum } from "@/untils/common/format_numb";
 type Props = {};
 
 export function PostItem({
@@ -101,11 +102,21 @@ export function PostItem({
         </div>
         <div className="flex justify-center items-center px-3">
           <EyeIcon className="w-5 h-5 text-gray-700 " />
-          <span className="text-gray-700 text-xs ml-2 ">{viewCount}</span>
+          <span className="text-gray-700 text-xs ml-2 ">
+            {abbrNum({
+              number: viewCount,
+              decPlaces: 2,
+            })}
+          </span>
         </div>
         <div className="flex justify-center items-center px-3">
           <ChatBubbleLeftRightIcon className="w-5 h-5 text-gray-700 " />
-          <span className="text-gray-700 text-xs ml-2 ">{commentCount}</span>
+          <span className="text-gray-700 text-xs ml-2 ">
+            {abbrNum({
+              number: commentCount,
+              decPlaces: 2,
+            })}
+          </span>
         </div>
       </div>
     </article>

@@ -4,6 +4,7 @@ import { useTags } from "@/hooks/use_tags";
 import { PostSaveModel } from "@/models/posts/post_save";
 import { TagModel } from "@/models/tags/tag";
 import { postApi } from "@/untils/configs/api_client/post_api";
+import { routerPathChange } from "@/untils/route/route_config";
 import XMarkIcon from "@heroicons/react/24/outline/XMarkIcon";
 import classNames from "classnames";
 import { useRouter } from "next/navigation";
@@ -48,11 +49,13 @@ const NewFastFood = (props: Props) => {
         toast.error("Tạo thất bại");
         return;
       }
-      if (result.data === true) {
+      if (result.data?.slug) {
         toast.success("Tạo thành công");
+
         setCreateLoading(false);
         resetForm();
-        push("/");
+        push(`/details/fast-food/${result.data?.slug}`);
+        return;
       }
       setCreateLoading(false);
       toast.error("Tạo thất bại");
